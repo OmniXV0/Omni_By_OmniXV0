@@ -1,5 +1,5 @@
 # Omni_By_OmniXV0
-Original video game | Made in Godot
+Original video game | Made in Godot with GDScript
 
 Play the game by clicking with the mouse and pushing buttons on the keyboard to dodge, attack and counter enemy actions.
 
