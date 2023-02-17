@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/OmniXV0 - Omni (Extra).wav-83c7c679926b5c575a787025ddeb93a6.sample"
+
+[deps]
+
+source_file="res://Audio/OmniXV0 - Omni (Extra).wav"
+dest_files=[ "res://.import/OmniXV0 - Omni (Extra).wav-83c7c679926b5c575a787025ddeb93a6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/OmniXV0 - OmniNihil (Loop).mp3-06baac15dd5adb2fc725b5ee88958f91.mp3str"
+
+[deps]
+
+source_file="res://Audio/OmniXV0 - OmniNihil (Loop).mp3"
+dest_files=[ "res://.import/OmniXV0 - OmniNihil (Loop).mp3-06baac15dd5adb2fc725b5ee88958f91.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
