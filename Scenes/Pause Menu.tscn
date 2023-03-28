@@ -1,0 +1,172 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Textures/Pause Menu Quit Button Hover.png" type="Texture" id=1]
+[ext_resource path="res://Textures/Pause Menu Quit Button.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Pause Menu Resume Button.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Pause Menu Paused Text.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Pause Menu Button Focus.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Pause Menu Resume Button Hover.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Pause Menu.gd" type="Script" id=7]
+[ext_resource path="res://Textures/Pause Menu Invisible Button.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Fade In"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PauseText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PauseMenuButtons/ResumeButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PauseMenuButtons/QuitButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Background:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="PauseMenu" type="Control"]
+pause_mode = 2
+modulate = Color( 1, 1, 1, 0.98 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PauseText" type="TextureRect" parent="."]
+margin_left = 170.0
+margin_right = 470.0
+margin_bottom = 150.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenuButtonsSelect" type="VBoxContainer" parent="."]
+margin_left = 200.0
+margin_top = 140.0
+margin_right = 500.0
+margin_bottom = 505.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_constants/separation = -35
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResumeButton" type="TextureButton" parent="PauseMenuButtonsSelect"]
+margin_right = 300.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 300, 200 )
+focus_neighbour_top = NodePath("../QuitButton")
+focus_neighbour_bottom = NodePath("../QuitButton")
+texture_normal = ExtResource( 8 )
+texture_focused = ExtResource( 5 )
+expand = true
+
+[node name="QuitButton" type="TextureButton" parent="PauseMenuButtonsSelect"]
+margin_top = 165.0
+margin_right = 300.0
+margin_bottom = 365.0
+rect_min_size = Vector2( 300, 200 )
+focus_neighbour_top = NodePath("../ResumeButton")
+focus_neighbour_bottom = NodePath("../ResumeButton")
+texture_normal = ExtResource( 8 )
+texture_focused = ExtResource( 5 )
+expand = true
+
+[node name="PauseMenuButtons" type="VBoxContainer" parent="."]
+margin_left = 200.0
+margin_top = 140.0
+margin_right = 500.0
+margin_bottom = 505.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_constants/separation = -35
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResumeButton" type="TextureButton" parent="PauseMenuButtons"]
+margin_right = 300.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 300, 200 )
+focus_neighbour_top = NodePath("../QuitButton")
+focus_neighbour_bottom = NodePath("../QuitButton")
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 6 )
+expand = true
+
+[node name="QuitButton" type="TextureButton" parent="PauseMenuButtons"]
+margin_top = 165.0
+margin_right = 300.0
+margin_bottom = 365.0
+rect_min_size = Vector2( 300, 200 )
+focus_neighbour_top = NodePath("../ResumeButton")
+focus_neighbour_bottom = NodePath("../ResumeButton")
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 1 )
+expand = true
+
+[node name="FadeIn" type="AnimationPlayer" parent="."]
+"anims/Fade In" = SubResource( 1 )
+
+[connection signal="pressed" from="PauseMenuButtonsSelect/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="PauseMenuButtonsSelect/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="PauseMenuButtons/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="PauseMenuButtons/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="animation_finished" from="FadeIn" to="." method="_on_FadeIn_animation_finished"]

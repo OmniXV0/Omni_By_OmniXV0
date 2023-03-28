@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Sprites/0VOlihiN.png" type="Texture" id=1]
+[ext_resource path="res://Audio/OmniXV0 - OmniXV0.wav" type="AudioStream" id=2]
+[ext_resource path="res://Sprites/OmniXV0.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/OmniXV0 Intro.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/Press Any Key To Skip Intro.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "OmniXV0 Intro Animation"
+length = 10.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("OmniXV0Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4.49, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VOlihiN:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4.49, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OmniXV0:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4.49, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PressAnyKeyToSkipIntro:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4.49, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 4.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "set_custom_mouse_cursor_1"
+} ]
+}
+
+[node name="OmniXV0 Intro" type="Node"]
+script = ExtResource( 4 )
+
+[node name="OmniXV0 - OmniXV0" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+mix_target = 1
+
+[node name="OmniXV0Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VOlihiN" type="Sprite" parent="."]
+position = Vector2( 320, 240 )
+texture = ExtResource( 1 )
+
+[node name="OmniXV0" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 320, 240 )
+texture = ExtResource( 3 )
+
+[node name="OmniXV0IntroAnimation" type="AnimationPlayer" parent="."]
+autoplay = "OmniXV0 Intro Animation"
+"anims/OmniXV0 Intro Animation" = SubResource( 1 )
+
+[node name="PressAnyKeyToSkipIntro" type="Sprite" parent="."]
+position = Vector2( 320, 465 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[connection signal="animation_finished" from="OmniXV0IntroAnimation" to="." method="_on_OmniXV0IntroAnimation_animation_finished"]
